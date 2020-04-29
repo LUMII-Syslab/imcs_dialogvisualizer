@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Dialog Engine</title>
+
+  <script src="dojo/dojo.js" data-dojo-config="async:1"></script>
+	<link rel="stylesheet" href="/webappos/djtheme/webappos.css">
+	<script type="text/javascript" src="/webappos.js"></script>
+
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module">
+
+    let settings = {
+				/*iframe: iframe,
+				screenWidth: webappos.desktop.get_width(),
+				screenHeight: webappos.desktop.get_height(),
+				eventHandler: callEventHandler,
+				resizeFrame: window.parent.resizeFrame // defined in EnvironmentEngine*/
+    };
+      
+    let dv = new IMCSDialogVisualizer(null, "root", settings);
+    dv.visualize();
+    setTimeout(()=>dv.refresh(), 5000);
+  </script>
+</body>
+
+</html>

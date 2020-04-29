@@ -1,0 +1,342 @@
+{
+  "className": "D#Form",
+  "ownedGroup": [
+    {
+      "className": "D#Group",
+      "reference": 14704
+    }
+  ],
+  "component": [
+    {
+      "className": "D#Row",
+      "component": [
+        {
+          "className": "D#HorizontalBox",
+          "component": [
+            {
+              "className": "D#Label",
+              "reference": 14776,
+              "id": "",
+              "caption": "Namespaces"
+            }
+          ],
+          "reference": 14772,
+          "horizontalAlignment": -1,
+          "verticalAlignment": -1,
+          "maximumWidth": 0,
+          "id": "HorizontalBox"
+        },
+        {
+          "className": "D#MultiLineTextBox",
+          "eventHandler": [
+            {
+              "className": "D#EventHandler",
+              "reference": 14784,
+              "procedureName": "lua.interpreter.Properties.update_presentation",
+              "transformationName": "lua_engine",
+              "eventName": "FocusLost"
+            }
+          ],
+          "reference": 14780,
+          "enabled": true,
+          "id": "field",
+          "preferredHeight": null
+        },
+        {
+          "className": "D#HorizontalBox",
+          "component": [
+            {
+              "className": "D#Button",
+              "eventHandler": [
+                {
+                  "className": "D#EventHandler",
+                  "reference": 14796,
+                  "procedureName": "lua.interpreter.Properties.show_called_dgr",
+                  "transformationName": "lua_engine",
+                  "eventName": "Click"
+                }
+              ],
+              "reference": 14792,
+              "id": "called_button",
+              "caption": "<-"
+            }
+          ],
+          "reference": 14788,
+          "verticalAlignment": -1,
+          "horizontalAlignment": 1
+        }
+      ],
+      "reference": 14768,
+      "readOnly": false,
+      "preferredRelativeHeight": 1,
+      "id": "Namespaces",
+      "minimumRelativeWidth": 888,
+      "prefferedRelativeHeight": "1"
+    },
+    {
+      "className": "D#Row",
+      "component": [
+            {
+              "className": "D#Label",
+              "reference": 14716,
+              "id": "",
+              "caption": "Name"
+            },
+          {
+          "className": "D#InputField",
+          "eventHandler": [
+            {
+              "className": "D#EventHandler",
+              "reference": 14724,
+              "procedureName": "lua.interpreter.Properties.update_presentation",
+              "transformationName": "lua_engine",
+              "eventName": "FocusLost"
+            }
+          ],
+          "reference": 14720,
+          "enabled": true,
+          "id": "field",
+          "preferredHeight": null,
+          "text": "pizza",
+          "outlineColor": 536870911,
+          "hint": ""
+        },
+        {
+          "reference": 9999,
+          "className": "D#Button",
+          "caption": "bbb"
+        }
+      ],
+      "reference": 14708,
+      "readOnly": false,
+      "preferredRelativeHeight": 1,
+      "id": "Name",
+      "minimumRelativeWidth": 888
+    },
+    {
+      "className": "D#Row",
+          "component": [
+            {
+              "className": "D#Label",
+              "reference": 14736,
+              "id": "",
+              "caption": "Prefix"
+            },
+        {
+          "className": "D#InputField",
+          "eventHandler": [
+            {
+              "className": "D#EventHandler",
+              "reference": 14744,
+              "procedureName": "lua.interpreter.Properties.update_presentation",
+              "transformationName": "lua_engine",
+              "eventName": "FocusLost"
+            }
+          ],
+          "reference": 14740,
+          "enabled": true,
+          "id": "field",
+          "preferredHeight": null,
+          "text": "http://lumii.lv/ontologies/pizza.owl",
+          "outlineColor": 536870911,
+          "hint": ""
+        }
+      ],
+      "reference": 14728,
+      "readOnly": false,
+      "preferredRelativeHeight": 1,
+      "id": "Prefix",
+      "minimumRelativeWidth": 888
+    },
+    {
+      "className": "D#Row",
+      "component": [
+        {
+          "className": "D#HorizontalBox",
+          "component": [
+            {
+              "className": "D#Label",
+              "reference": 14756,
+              "id": "",
+              "caption": "Date"
+            }
+          ],
+          "reference": 14752,
+          "horizontalAlignment": -1,
+          "verticalAlignment": -1,
+          "maximumWidth": 0,
+          "id": "HorizontalBox"
+        },
+        {
+          "className": "D#InputField",
+          "eventHandler": [
+            {
+              "className": "D#EventHandler",
+              "reference": 14764,
+              "procedureName": "lua.interpreter.Properties.update_presentation",
+              "transformationName": "lua_engine",
+              "eventName": "FocusLost"
+            }
+          ],
+          "reference": 14760,
+          "enabled": true,
+          "id": "field",
+          "preferredHeight": null,
+          "text": "Tue Dec 31 23_35_14 EET 2019",
+          "outlineColor": 536870911,
+          "hint": ""
+        }
+      ],
+      "reference": 14748,
+      "readOnly": false,
+      "preferredRelativeHeight": 1,
+      "id": "Date",
+      "minimumRelativeWidth": 888
+    },
+    {
+      "className": "D#Row",
+      "component": [
+        {
+          "className": "D#HorizontalBox",
+          "component": [
+            {
+              "className": "D#Label",
+              "reference": 14808,
+              "id": "",
+              "caption": "Comment"
+            }
+          ],
+          "reference": 14804,
+          "horizontalAlignment": -1,
+          "verticalAlignment": -1,
+          "maximumWidth": 0,
+          "id": "HorizontalBox"
+        },
+        {
+          "className": "D#TextArea",
+          "eventHandler": [
+            {
+              "className": "D#EventHandler",
+              "reference": 14816,
+              "procedureName": "lua.interpreter.Properties.update_presentation",
+              "transformationName": "lua_engine",
+              "eventName": "FocusLost"
+            }
+          ],
+          "reference": 14812,
+          "enabled": true,
+          "minimumHeight": 100,
+          "id": "field",
+          "preferredHeight": null,
+          "text": "",
+          "outlineColor": 536870911,
+          "hint": ""
+        }
+      ],
+      "reference": 14800,
+      "readOnly": false,
+      "preferredRelativeHeight": 1,
+      "id": "Comment",
+      "minimumRelativeWidth": 888,
+      "prefferedRelativeHeight": "1"
+    },
+    {
+      "className": "D#Row",
+      "component": [
+        {
+          "className": "D#HorizontalBox",
+          "component": [
+            {
+              "className": "D#Label",
+              "reference": 14828,
+              "id": "",
+              "caption": "Annotation"
+            }
+          ],
+          "reference": 14824,
+          "horizontalAlignment": -1,
+          "verticalAlignment": -1,
+          "maximumWidth": 0,
+          "id": "HorizontalBox"
+        },
+        {
+          "className": "D#MultiLineTextBox",
+          "eventHandler": [
+            {
+              "className": "D#EventHandler",
+              "reference": 14836,
+              "procedureName": "lua.interpreter.Properties.update_presentation",
+              "transformationName": "lua_engine",
+              "eventName": "FocusLost"
+            }
+          ],
+          "reference": 14832,
+          "enabled": true,
+          "id": "field",
+          "preferredHeight": null
+        },
+        {
+          "className": "D#HorizontalBox",
+          "component": [
+            {
+              "className": "D#Button",
+              "eventHandler": [
+                {
+                  "className": "D#EventHandler",
+                  "reference": 14848,
+                  "procedureName": "lua.interpreter.Properties.show_called_dgr",
+                  "transformationName": "lua_engine",
+                  "eventName": "Click"
+                }
+              ],
+              "reference": 14844,
+              "id": "called_button",
+              "caption": "<-"
+            }
+          ],
+          "reference": 14840,
+          "verticalAlignment": -1,
+          "horizontalAlignment": 1
+        }
+      ],
+      "reference": 14820,
+      "readOnly": false,
+      "preferredRelativeHeight": 1,
+      "id": "Annotation",
+      "minimumRelativeWidth": 888,
+      "prefferedRelativeHeight": "1"
+    },
+    {
+      "className": "D#HorizontalBox",
+      "component": [
+        {
+          "className": "D#Button",
+          "eventHandler": [
+            {
+              "className": "D#EventHandler",
+              "reference": 14860,
+              "procedureName": "lua.interpreter.Properties.close_form",
+              "transformationName": "lua_engine",
+              "eventName": "Click"
+            }
+          ],
+          "reference": 14856,
+          "id": "close_button",
+          "caption": "Close"
+        }
+      ],
+      "reference": 14852,
+      "id": "HorizontalBox",
+      "horizontalAlignment": 1,
+      "maximumHeight": 0
+    }
+  ],
+  "reference": 14700,
+  "caption": "OWL ",
+  "editable": true,
+  "buttonClickOnClose": true,
+  "horizontalAlignment": -1,
+  "preferredWidth": 250,
+  "verticalAlignment": 0,
+  "id": "OWL"
+}
