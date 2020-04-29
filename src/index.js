@@ -59,7 +59,6 @@ let IMCSDialogVisualizer = class  {
   }
 
   refresh(r) {
-    console.log("formRef",this.formRef.current);
     this.formRef.current.rerender(r);
   }
 

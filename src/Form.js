@@ -5,6 +5,7 @@ import { IMCSDialogLayout } from '@LUMII-Syslab/imcs_layoutengine';
 import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+import "@blueprintjs/table/lib/css/table.css";
 
 import { Dialog, Classes, Spinner } from "@blueprintjs/core";
 
@@ -39,6 +40,7 @@ import VTable from "./VTable.js";
 let ComponentTypes = {
   "Label": Label,
   "InputField": InputField,
+  "TextBox": InputField,
   "VerticalBox": VerticalBox,
   "HorizontalBox": HorizontalBox,
   "Stack": Stack,
