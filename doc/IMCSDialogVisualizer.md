@@ -45,8 +45,8 @@ The metamodel describes the supported dialog elements and how they are organized
 
 ### Containers
 
-The tree of components is organized by means of containers. The following fragment lists the currently supported containers and how they are linked
-to components. Notice that each container is also a component. 
+The tree of components is organized by means of containers via the "component" link. The following fragment lists the currently supported containers and how they are linked
+to components. Notice that each container is also a component.
 
 
 ![Containers From Dialog Enginge Metamodel](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/containers.png)
@@ -63,32 +63,44 @@ to components. Notice that each container is also a component.
 |TabContainer|A visible container, where several tabs occupy the same space, and the user can switch between tabs. Child componenets must be of type Tab.|
 |Tab|A visible tab container with a caption. It must be a child (via the component/container link) of TabContainer. The children within a Tab are laid out vertically.|
 
+### The Form Container
+Besides the abovementioned containers, there is also the *Form* container, which must be the root of the tree of components. If the *embedded* setting is false, the form can contain the *caption*
+attribute to be displayed as a title. *Form* is a subclass of *VerticalBox*; thus, child components are laid out vertically. However, a *HorizontalBox* or a *Row* can be attached as a child component to describe a horizontal layout.
+
 Mapping to JavaScript objects is as follows:
 * Class names are mapped to the "className" field. If the class name contains some prefix ending with #, the prefix is automatically dropped, e.g., D#HorizontalBox becomes HorizontalBox.
-* Class fields are mapped to the fileds of the corresponding JavaScript/JSON objects.
+* Class attributes are mapped to the fileds of the corresponding JavaScript/JSON objects.
 * Links are mapped to the array fields. 
-* Besides, each component must have a unique integer *reference* field. It can be used when cross-links have to be specified, e.g., the *activeTab* link to an existing child *Tab*.
+* Besides, each component must have a unique integer *reference* field. It is used by IMCSDialogVisualizer internally. In addition, it can be used to specify cross-links, e.g., the *activeTab* link to an existing child *Tab*.
 
-Example:
-A TabContainer containing 2 Tabs:
+#### Example
+
+A Form with a single TabContainer containing 2 empty Tabs:
 ```javascript
 {
-    reference: 100,
-    className: "TabContainer",
+    reference: 50,
+    className: "Form",
+    caption: "My dialog form",
     component: [{
-        reference: 101,
-        className: "Tab",
-        caption: "The first tab" 
-      },{
-        reference: 102,
-        className: "Tab",
-        caption: "The second tab" 
-      }
-    ],
-    activeTab: [{
-        reference: 102
-    }],
+        reference: 100,
+        className: "TabContainer",
+        component: [{
+            reference: 101,
+            className: "Tab",
+            caption: "The first tab" 
+        },{
+            reference: 102,
+            className: "Tab",
+            caption: "The second tab" 
+        }
+        ],
+        activeTab: [{
+            reference: 102
+        }],
+    }]
 }
 ```
 
 ### Components
+
+Below we list currently implemented components, which can be put inside containers. We also describe the attributes and events of the components.
