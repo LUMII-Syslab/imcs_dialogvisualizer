@@ -38,9 +38,9 @@ The JS module imcs_dialogvisualizer.js provides the IMCSDialogVisualizer JavaScr
 * A sample dialog invocation from HTML can be found [here](https://github.com/LUMII-Syslab/imcs_dialogvisualizer/blob/master/public/index.html).
 
 #### The resulting dialog window for dialog.json
-![The resulting dialog window for dialog.json](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/dialog_sample.png)
+![The resulting dialog window for dialog.json](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/dialog_sample.png =50%x50%)
 #### The resulting dialog window for index.html
-![The resulting dialog window for index.html](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/index_sample.png)
+![The resulting dialog window for index.html](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/index_sample.png =50%x50%)
 
 
 ## How to compile from sources
