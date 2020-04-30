@@ -46,7 +46,8 @@ The metamodel describes the supported dialog elements and how they are organized
 ### Containers
 
 The tree of components is organized by means of containers. The following fragment lists the currently supported containers and how they are linked
-to components (in fact, each container is also a component):
+to components. Notice that each container is also a component. 
+
 
 ![Containers From Dialog Enginge Metamodel](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/containers.png)
 
@@ -61,5 +62,33 @@ to components (in fact, each container is also a component):
 |Stack|Children will be organized into layers, one on top of another, like a card stack. Used to implement TabContainer.|
 |TabContainer|A visible container, where several tabs occupy the same space, and the user can switch between tabs. Child componenets must be of type Tab.|
 |Tab|A visible tab container with a caption. It must be a child (via the component/container link) of TabContainer. The children within a Tab are laid out vertically.|
+
+Mapping to JavaScript objects is as follows:
+* Class names are mapped to the "className" field. If the class name contains some prefix ending with #, the prefix is automatically dropped, e.g., D#HorizontalBox becomes HorizontalBox.
+* Class fields are mapped to the fileds of the corresponding JavaScript/JSON objects.
+* Links are mapped to the array fields. 
+* Besides, each component must have a unique integer *reference* field. It can be used when cross-links have to be specified, e.g., the *activeTab* link to an existing child *Tab*.
+
+Example:
+A TabContainer containing 2 Tabs:
+```json
+{
+    reference: 100,
+    className: "TabContainer",
+    component: [{
+        reference: 101,
+        className: "Tab",
+        caption: "The first tab" 
+      },{
+        reference: 102,
+        className: "Tab",
+        caption: "The second tab" 
+      }
+    ],
+    activeTab: [{
+        reference: 102
+    }],
+}
+```
 
 ### Components
