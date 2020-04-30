@@ -106,11 +106,29 @@ A Form with a single TabContainer containing 2 empty Tabs:
 
 Below we list currently implemented components, which can be put inside containers. We also describe the attributes and events of the components.
 
-#### Example
+#### Fields common to all components
+|Field|Default value|Description|
+|-----|-------------|-----------|
+|enabled|true|whether the given component is enabled; this value, if set, is propagated recursively to all descendands until another value is encountered|
+|readOnly|false|whether the given component is readOnly; some components are displayed equally if !enabled or readOnly; this value, if set, is propagated recursively to all descendands until another value is encountered|
+
+#### Button
+|Field|Default value|Description|
+|-----|-------------|-----------|
+|caption||the displayed name of the button|
+|=====|============|======|
+|eventName|value and other arguments|Description|
+|-----|------------|-----------|
+|ClickEvent|n/a|Emitted when the user clicks the button|
+
+
+
+## Example
 
 A JSON file describing a sample dialog window can be obtained [here](https://github.com/LUMII-Syslab/imcs_dialogvisualizer/blob/master/src/dialog.json).
 
 The result:
+
 ![The resulting dialog window](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/dialog_sample.png)
 
 ## Support for webAppOS
