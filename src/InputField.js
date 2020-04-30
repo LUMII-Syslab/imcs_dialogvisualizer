@@ -16,12 +16,17 @@ class InputField extends Component {
 
     let m = measure(this.myRef.current);
 
-    return super.getBounds({
-      minimumWidth: 30,
-      preferredWidth: m.w,
+    let bounds = super.getBounds({
       minimumHeight: m.h,
       maximumHeight: m.h
     });
+
+    if (this.state.tree.minimumWidth)
+      bounds.minimumWidth = this.state.tree.minimumWidth;
+    else
+      bounds.minimumWidth = 30;
+
+    return bounds;
   }
 
   onFocus() {

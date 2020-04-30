@@ -18,9 +18,9 @@ Here
 |-----|-----------|---|
 |embedded||Normally, IMCSDialogVisualizer creates its own modal dialog window with an overlay. However, if (embedded) is true, the dialog window (with caption and border) won't be created.
 |eventHandler|{|a function for handling dialog events; it must take 1 argument having the following fields:|
-|| component | a dialog component (from the tree), where the event occurred;|
-|| eventName | the event name (e.g., "Click") corresponding to the metamodel (without the "on" prefix);|
-|| value | an event-specific value (if applicable),  e.g., the string value of the input field;|
+|| component | a dialog component (an object from the tree), where the event occurred|
+|| eventName | the event name (e.g., "ClickEvent"), which is specific to a particular component|
+|| value | an event-specific value (if applicable),  e.g., the text of the input field|
 || ... | additional event-specific fields (e.g., the cursor position, see the list of components and their events below)|
 ||}||
 
@@ -45,17 +45,18 @@ The metamodel describes the supported dialog elements and how they are organized
 
 ### Containers
 
-The tree of components is organized by means of containers via the "component" link. The following fragment lists the currently supported containers and how they are linked
-to components. Notice that each container is also a component.
+The tree of components is organized by means of containers via the "component" link. The following figure displays the currently supported containers and how they are linked
+to components. Notice that each container is also a component. Containers can be mixed to make a tree structure of your choice.
 
 
 ![Containers From Dialog Enginge Metamodel](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/containers.png)
 
 |Container class|Description|
 |---------------|-----------|
-|Container|Abstract class, not used directly|
-|VerticalBox|Children are laid out vertically|
-|HorizontalBox|Children are laid out horizontally|
+|Component|An abstract class for representing leaf tree components as well as containers; not used directly.|
+|Container|An abstract class for containers; not used directly.|
+|VerticalBox|Children are laid out vertically.|
+|HorizontalBox|Children are laid out horizontally.|
 |GroupBox|A visible container with a bevel, where elements can be visually grouped together. Useful for radio buttons and other related components.|
 |Column|Similar to VerticalBox, but children of neighbouring columns will be aligned into a table.|
 |Row|Similar to HorizontallBox, but children of neighbouring rows will be aligned into a table.|
@@ -104,3 +105,19 @@ A Form with a single TabContainer containing 2 empty Tabs:
 ### Components
 
 Below we list currently implemented components, which can be put inside containers. We also describe the attributes and events of the components.
+
+#### Example
+
+A JSON file describing a sample dialog window can be obtained [here](https://github.com/LUMII-Syslab/imcs_dialogvisualizer/blob/master/src/dialog.json).
+
+## Support for webAppOS
+
+This library is used by webAppOS DialogEngine to visualize dialog windows. IMCSDialogVisualizer is written in such a way
+that webAppOS web memory objects representing the tree of components can be passed "as is" as soon as they conform
+to the IMCSDialogVisualizer metamodel.
+
+Since webAppOS web memory objects do not have the className field, but have the getClassName() method,
+IMCSDialogVisualizer will use getClassName() when className is not available.
+
+If you are interested in webAppOS, please, visit its [homepage](http://webappos.org).
+

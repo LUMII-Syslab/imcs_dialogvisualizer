@@ -3,36 +3,40 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>Dialog Engine</title>
-
-  <script src="dojo/dojo.js" data-dojo-config="async:1"></script>
-	<link rel="stylesheet" href="/webappos/djtheme/webappos.css">
-	<script type="text/javascript" src="/webappos.js"></script>
-
+  <title>Dialog Visualizer Sample</title>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   <script type="module">
-
-    let settings = {
-				/*iframe: iframe,
-				screenWidth: webappos.desktop.get_width(),
-				screenHeight: webappos.desktop.get_height(),
-				eventHandler: callEventHandler,
-				resizeFrame: window.parent.resizeFrame // defined in EnvironmentEngine*/
+    let tree = {
+      reference: 1,
+      className: "Form",
+      caption: "Sample form",
+      component: [{
+        reference: 2,
+        className: "HorizontalBox",
+        component: [{
+          reference: 3,
+          className: "Label",
+          caption: "Enter your name:"
+        },{
+          reference: 4,
+          className: "InputField",
+          minimumWidth: 200
+        }],
+      },
+      {
+        reference: 5,
+        className: "Button",
+        caption: "Hello, world!"
+      }]
     };
-      
-    let dv = new IMCSDialogVisualizer(null, "root", settings);
+    let settings = {
+    };      
+    let dv = new IMCSDialogVisualizer(tree, "root", settings);
     dv.visualize();
-    //setTimeout(()=>dv.refresh(), 5000);
   </script>
 </body>
 
