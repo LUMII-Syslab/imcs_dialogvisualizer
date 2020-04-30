@@ -113,13 +113,23 @@ Below we list currently implemented components, which can be put inside containe
 |readOnly|false|whether the given component is readOnly; some components are displayed equally if !enabled or readOnly; this value, if set, is propagated recursively to all descendands until another value is encountered|
 
 #### Button
-|Field|Default value|Description|
-|-----|-------------|-----------|
-|caption||the displayed name of the button|
 
-|eventName|value and other arguments|Description|
-|-----|------------|-----------|
-|ClickEvent|n/a|Emitted when the user clicks the button|
+Fields:
+* caption - the displayed name of the button
+
+Events:
+* ClickEvent - emitted when the user clicks the button; no value is passed.
+
+#### CheckBox
+
+Fields:
+* caption - the displayed name of the checkbox label
+* checked - whether the checkbox is checked (default: false)
+
+Events:
+* ChangeEvent - emitted when the user checks or unchecks the checkbox; the checkbox value (true|false) is passed in the *value* argument;
+* FocusGainedEvent - emitted when the component gains the focus; the checkbox value (true|false) is passed in the *value* argument;
+* FocusLostEvent - emitted when the component loses the focus; the checkbox value (true|false) is passed in the *value* argument;
 
 
 
