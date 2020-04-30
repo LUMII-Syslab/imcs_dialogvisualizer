@@ -45,8 +45,21 @@ The metamodel describes the supported dialog elements and how they are organized
 
 ### Containers
 
-The tree of components is organized by means of containers.
+The tree of components is organized by means of containers. The following fragment lists the currently supported containers and how they are linked
+to components (in fact, each container is also a component):
 
 ![Containers From Dialog Enginge Metamodel](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/containers.png)
+
+|Container class|Description|
+|---------------|-----------|
+|Container|Abstract class, not used directly|
+|VerticalBox|Children are laid out vertically|
+|HorizontalBox|Children are laid out horizontally|
+|GroupBox|A visible container with a bevel, where elements can be visually grouped together. Useful for radio buttons and other related components.|
+|Column|Similar to VerticalBox, but children of neighbouring columns will be aligned into a table.|
+|Row|Similar to HorizontallBox, but children of neighbouring rows will be aligned into a table.|
+|Stack|Children will be organized into layers, one on top of another, like a card stack. Used to implement TabContainer.|
+|TabContainer|A visible container, where several tabs occupy the same space, and the user can switch between tabs. Child componenets must be of type Tab.|
+|Tab|A visible tab container with a caption. It must be a child (via the component/container link) of TabContainer. The children within a Tab are laid out vertically.|
 
 ### Components
