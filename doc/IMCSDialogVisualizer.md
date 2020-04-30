@@ -71,7 +71,7 @@ Mapping to JavaScript objects is as follows:
 
 Example:
 A TabContainer containing 2 Tabs:
-```json
+```javascript
 {
     reference: 100,
     className: "TabContainer",
