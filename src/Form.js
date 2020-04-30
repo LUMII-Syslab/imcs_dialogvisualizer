@@ -91,11 +91,10 @@ class Form extends VerticalBox {
         console.log("Ignoring " + ev.eventName + ", since eventHandler was not specified for IMCSDialogVisualizer; event=", ev);
       };
 
-    let formReference = this.state.tree.reference;
     this.callback = {
       load: function (reference) {
         if (!layoutContext.reference2react[reference]) {
-          console.log("load started "+reference+" of form "+formReference, layoutContext.reference2tree[reference]);
+          //console.log("load started "+reference+" of form "+formReference, layoutContext.reference2tree[reference]);
           layoutContext.loading[reference] = true;
           layoutContext.dialogLayout.loadStarted(reference);
         }
@@ -114,15 +113,6 @@ class Form extends VerticalBox {
         if (!tree.component) // the component link goes to children
           return [];
         let arr = tree.component.map((child) => (child.reference));
-        let mm = {};
-        for (let i=0; i<arr.length; i++) {
-          if (mm[arr[i]]) {
-            console.log("DUPLICATES WARNING",arr);
-            alert("dups!");
-          }
-          mm[arr[i]] = true;
-        }
-
         return arr;
       },
       getBounds: function (reference) {
@@ -158,19 +148,19 @@ class Form extends VerticalBox {
         return retVal;
       },
       layout: function (reference, x, y, w, h) {
-        console.log("layout ",reference,x,y,w,h,layoutContext.reference2tree[reference]);
+        //console.log("layout ",reference,x,y,w,h,layoutContext.reference2tree[reference]);
         let ref = layoutContext.reference2react[reference];
         ref.layout(x, y, w, h);
       },
       destroy: function (reference) {
-        console.log("destroy for "+reference);
+        //console.log("destroy for "+reference);
         delete layoutContext.reference2react[reference];
       }
     };
     this.layoutContext = layoutContext;
     this.layoutContext.dialogLayout = new IMCSDialogLayout(this.callback);
 
-    this.state.needsDialog = !props.iframe;
+    this.state.needsDialog = !props.iframe && !props.embedded;
     this.state.caption = props.tree.caption;
     this.state.spinner = true; // wait for layout initially...
     this.layoutContext.dialogLayout.loadAndLayout(this.props.tree.reference);
@@ -187,12 +177,16 @@ class Form extends VerticalBox {
 
   getBounds() {
     let retVal = super.getBounds();
-    if (this.props.iframe) {
+    if (!this.state.needsDialog) {
       Object.assign(retVal, {
         leftPadding: 5,
         rightPadding: 0,
         topPadding: 5,
-        bottomPadding: 0
+        bottomPadding: 0,
+        leftMargin: 10,
+        rightMargin: 10,
+        topMargin: 10,
+        bottomMargin: 10        
       });  
     }
     else {
@@ -200,7 +194,11 @@ class Form extends VerticalBox {
         leftPadding: 10,
         rightPadding: 10,
         topPadding: 10,
-        bottomPadding: 10
+        bottomPadding: 10,
+        leftMargin: 10,
+        rightMargin: 10,
+        topMargin: 10,
+        bottomMargin: 10        
       });  
     }
     return retVal;
@@ -223,18 +221,13 @@ class Form extends VerticalBox {
   }
 
   rerender(r) {
-    r=0; // re-render the whole form
+    //r=0; // re-render the whole form
 
-    console.log("in form rerender");
     if (!r)
       r = this.state.tree.reference;
     let tree = this.layoutContext.reference2tree[r];
     if (!tree)
       tree = this.state.tree;
-
-    console.log("RERENDER for "+r+", form="+this.state.tree.reference, " subtree=",tree);
-
-    
 
     // re-building the whole(!) map reference2tree...
     this.layoutContext.update(this.state.tree, true);

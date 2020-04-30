@@ -21,9 +21,7 @@ class InputField extends Component {
       maximumHeight: m.h
     });
 
-    if (this.state.tree.minimumWidth)
-      bounds.minimumWidth = this.state.tree.minimumWidth;
-    else
+    if (!bounds.minimumWidth)
       bounds.minimumWidth = 30;
 
     return bounds;

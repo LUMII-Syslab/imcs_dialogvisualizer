@@ -110,6 +110,9 @@ Below we list currently implemented components, which can be put inside containe
 
 A JSON file describing a sample dialog window can be obtained [here](https://github.com/LUMII-Syslab/imcs_dialogvisualizer/blob/master/src/dialog.json).
 
+The result:
+![The resulting dialog window](https://raw.githubusercontent.com/LUMII-Syslab/imcs_dialogvisualizer/master/doc/dialog_sample.png)
+
 ## Support for webAppOS
 
 This library is used by webAppOS DialogEngine to visualize dialog windows. IMCSDialogVisualizer is written in such a way

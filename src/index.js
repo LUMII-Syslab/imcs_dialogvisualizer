@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 //import './index.css';
 import Form from './Form';
 
-import rTestForm from './dialog_with_table.json';
+import rTestForm from './dialog.json';
+//import rTestForm from './dialog_with_table.json';
 //import rTestForm from './dialog_with_tree.json';
 
 

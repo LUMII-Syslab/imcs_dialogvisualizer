@@ -38,7 +38,7 @@ class Component extends React.Component {
 
         ctx.reference2react[this.state.tree.reference] = this;
         if (ctx.loading[this.state.tree.reference]) {
-            console.log("load finished (after mount) for "+this.state.tree.reference);
+            //console.log("load finished (after mount) for "+this.state.tree.reference);
             delete ctx.loading[this.state.tree.reference];
             ctx.dialogLayout.loadFinished(this.state.tree.reference);
         }
@@ -51,7 +51,7 @@ class Component extends React.Component {
 
         ctx.reference2react[this.state.tree.reference] = this;
         if (ctx.loading[this.state.tree.reference]) {
-            console.log("load finished (during update) for "+this.state.tree.reference);
+            //console.log("load finished (during update) for "+this.state.tree.reference);
             delete ctx.loading[this.state.tree.reference];
             ctx.dialogLayout.loadFinished(this.state.tree.reference);
         }
@@ -111,6 +111,19 @@ class Component extends React.Component {
         }
         else
             retVal.verticalAlignment = "CENTER";
+
+        if (node.minimumWidth)
+            retVal.minimumWidth = node.minimumWidth;
+        if (node.minimumHeight)
+            retVal.minimumHeight = node.minimumHeight;
+        if (node.maximumWidth)
+            retVal.maximumWidth = node.maximumWidth;
+        if (node.minimumHeight)
+            retVal.maximumHeight = node.maximumHeight;
+        if (node.preferredWidth)
+            retVal.preferredWidth = node.preferredWidth;
+        if (node.preferredHeight)
+            retVal.preferredHeight = node.preferredHeight;
 
         if (node.minimumRelativeWidth)
             retVal.minimumRelativeWidth = node.minimumRelativeWidth;
