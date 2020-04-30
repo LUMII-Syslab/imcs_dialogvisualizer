@@ -116,7 +116,7 @@ Below we list currently implemented components, which can be put inside containe
 |Field|Default value|Description|
 |-----|-------------|-----------|
 |caption||the displayed name of the button|
-|=====|============|======|
+
 |eventName|value and other arguments|Description|
 |-----|------------|-----------|
 |ClickEvent|n/a|Emitted when the user clicks the button|
