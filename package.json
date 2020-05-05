@@ -1,7 +1,11 @@
 {
-  "name": "imcs_dialogvisualizer",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@LUMII-Syslab/imcs_dialogvisualizer",
+  "version": "0.9.0",
+  "description": "IMCS SysLab layout library for laying out graph diagrams and dialog windows.",
+  "main": "dist/imcs_dialogvisualizer.js",
+  "directories": {
+    "doc": "doc"
+  },
   "dependencies": {
     "@LUMII-Syslab/imcs_layoutengine": "^1.0.5",
     "@blueprintjs/core": "^3.25.0",
@@ -37,5 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "author": "Sergejs Kozlovics @ IMCS, UL",
+  "license": "SEE LICENSE IN imcs_dialogvisualizer.COPYING",
+  "bugs": {
+    "url": "https://github.com/LUMII-Syslab/imcs_dialogvisualizer/issues"
   }
 }
