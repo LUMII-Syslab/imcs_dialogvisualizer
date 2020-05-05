@@ -106,22 +106,19 @@ A Form with a single TabContainer containing 2 empty Tabs:
 
 Below we list currently implemented components, which can be put inside containers. We also describe the attributes and events of the components.
 
-Component|Attributes&Events|Description
+Component|Fields&Events|Description
 ---------|-----------|---
 ***Any component***||
-Fields||
 &nbsp;|*enabled*|whether the given component is enabled; this value, if set, is propagated recursively to all descendands until another value is encountered (default: true) 
 &nbsp;|*readOnly*|whether the given component is readOnly; some components are displayed equally if !enabled or readOnly; this value, if set, is propagated recursively to all descendands until another value is encountered (default: false) 
 **Button**||a clickable button
-Fields||
 &nbsp;|*caption*|the displayed name of the button
-Events||
+||
 &nbsp;|*ClickEvent*|mitted when the user clicks the button; no value is passed
 **CheckBox**||a label with a clickable square for a tick
-Fields||
 &nbsp;|*caption*|the displayed name of the checkbox label
 &nbsp;|*checked*|whether the checkbox is checked (default: false)
-Events||
+||
 &nbsp;|*ChangeEvent*|emitted when the user checks or unchecks the checkbox; the checkbox value (true or false) is passed in the *value* field of the event
 &nbsp;|
 &nbsp;|*FocusGainedEvent*|emitted when the component gains the focus; the checkbox value (true or false) is passed in the *value* field of the event
