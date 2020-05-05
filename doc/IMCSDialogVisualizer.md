@@ -114,15 +114,22 @@ Component|Fields&Events|Description
 **Button**||a clickable button
 &nbsp;|*caption*|the displayed name of the button
 ||
-&nbsp;|*ClickEvent*|mitted when the user clicks the button; no value is passed
+&nbsp;|*ClickEvent*|emitted when the user clicks the button; no value is passed
 **CheckBox**||a label with a clickable square for a tick
 &nbsp;|*caption*|the displayed name of the checkbox label
 &nbsp;|*checked*|whether the checkbox is checked (default: false)
 ||
 &nbsp;|*ChangeEvent*|emitted when the user checks or unchecks the checkbox; the checkbox value (true or false) is passed in the *value* field of the event
-&nbsp;|
 &nbsp;|*FocusGainedEvent*|emitted when the component gains the focus; the checkbox value (true or false) is passed in the *value* field of the event
 &nbsp;|*FocusLostEvent*|emitted when the component loses the focus; the checkbox value (true or false) is passed in the *value* argument
+**ComboBox**||a text input field combined with a list of values to select from
+&nbsp;|*text*|the text value of the input field (if editable==false, the text value must be one of the values of the items)
+&nbsp;|*item*|an array of items, where each item must have a *value* field; such values will be shown in the drop down menu
+&nbsp;|*editable*|whether the user can enter an arbitrary value, not just a value from the list; if *false*, only the HTML select will be displayed (default: true)
+||
+&nbsp;|*ChangeEvent*|emitted when the user selects one of the values in the drop down menu, or enters a new text value
+&nbsp;|*FocusGainedEvent*|emitted when the component gains the focus; the text value is passed in the *value* field of the event
+&nbsp;|*FocusLostEvent*|emitted when the component loses the focus; the text value is passed in the *value* argument
 
 
 
