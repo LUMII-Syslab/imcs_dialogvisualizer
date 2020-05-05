@@ -7,8 +7,6 @@ class Tree extends Component {
   constructor(props) {
     super(props);
 
-    this.state.value = this.state.tree.text?this.state.tree.text:"";
-
     this.areaRef = React.createRef();
     this.handleNodeCollapse = this.handleNodeCollapse.bind(this);
     this.handleNodeExpand = this.handleNodeExpand.bind(this);
@@ -106,9 +104,6 @@ class Tree extends Component {
   }
 
   render() {
-    let editable = typeof(this.state.tree.editable)==="undefined" || this.state.tree.editable;
-
-
     let style2 = {};
     if (this.state.style.width)
       style2.width = this.state.style.width+"px";
@@ -116,7 +111,7 @@ class Tree extends Component {
       style2.height = this.state.style.height+"px";
     return (
       <span className={Classes.ELEVATION_0} style={{display:"inline-block", ...this.state.style}}>
-      <BPTree ref={this.myRef} style={style2} disabled={!editable || !this.state.enabled} readOnly={this.state.readOnly} onFocus={(e)=>{this.onFocus()}} onBlur={(e)=>{this.onBlur()}}
+      <BPTree ref={this.myRef} style={style2} disabled={!this.state.enabled} readOnly={this.state.readOnly} onFocus={(e)=>{this.onFocus()}} onBlur={(e)=>{this.onBlur()}}
         contents={this.state.nodes}
         onNodeCollapse={this.handleNodeCollapse}
         onNodeExpand={this.handleNodeExpand}

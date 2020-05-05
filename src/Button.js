@@ -5,6 +5,21 @@ import measure from "./measure";
 
 class Button extends Component {
 
+
+  constructor(props) {
+    super(props);
+
+    this.state.caption = this.state.tree.caption;
+
+    // handling the case when we are inside a VTable cell...
+    if (this.state.tree.value)
+      this.state.caption = this.state.tree.value;
+    if (this.state.tree.component && this.state.tree.component.length>0 && this.state.tree.component[0].caption)
+      this.state.caption = this.state.tree.component[0].caption;
+
+    this.inputRef = React.createRef();
+  }
+
   getBounds() {
 
     let m = measure(this.myRef.current.buttonRef);
@@ -42,7 +57,7 @@ class Button extends Component {
 
   render() {
     return (
-      <BPButton ref={this.myRef} style={this.state.style} disabled={!this.state.enabled} onClick={(e)=>{this.onClick()}}>{this.state.tree.caption}</BPButton>
+      <BPButton ref={this.myRef} style={this.state.style} disabled={!this.state.enabled} onClick={(e)=>{this.onClick()}}>{this.state.caption}</BPButton>
     );
   }
 }

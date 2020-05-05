@@ -30,7 +30,6 @@ class Image extends Component {
     if (!this.getListing) {
       this.getListing = async function() {
         return new Promise(function(resolve, reject) {
-          console.log("qq", myThis.picturesPath);
           $.ajax({
             url: myThis.picturesPath,
             context: document.body
@@ -159,14 +158,12 @@ class Image extends Component {
       return arr;
     });
 
-    console.log("IMAGES",imgs,editable,this.state.enabled);
-
     if (this.state.pictures.length===0)
       imgs = <div style={{padding:"5px", width:"100%", height:"100%"}}>No images found</div>;
 
     return (
       <BPButton ref={this.myRef} style={this.state.style} disabled={!editable || !this.state.enabled} onClick={(e)=>this.setState({isPopoverOpen:!this.state.isPopoverOpen})}>
-      <Popover style={{zIndex:100000,...this.state.style}} content={imgs} isOpen={this.state.isPopoverOpen} onInteraction={(value)=>{console.log(value);this.setState({isPopoverOpen:editable&&this.state.enabled&&value})}}>
+      <Popover style={{zIndex:100000,...this.state.style}} content={imgs} isOpen={this.state.isPopoverOpen} onInteraction={(value)=>{this.setState({isPopoverOpen:editable&&this.state.enabled&&value})}}>
         <img alt={this.state.fileName} style={{width:"100%", height:"auto"}} src={this.state.fileName}/>
       </Popover>
       </BPButton>

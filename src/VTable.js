@@ -1,6 +1,6 @@
 import React from 'react';
 import Component from "./Component";
-import { Cell, Column, Table } from "@blueprintjs/table";
+import { Cell, Column, Table, SelectionModes } from "@blueprintjs/table";
 import measure from "./measure";
 import $ from "jquery";
 import {getComponentTypeByTree} from "./ComponentTypes";
@@ -10,15 +10,20 @@ class VTable extends Component {
   constructor(props) {
     super(props)
     this.state.style.display = "inline-block";
+    
+    this.selectedRow = -1;
+    let rows = this.state.tree.vTableRow?this.state.tree.vTableRow:[];
+    if (this.state.tree.selectedRow && this.state.tree.SelectedRow.length>0) {
+      let selectedReference = this.state.tree.selectedRow[0].reference;
+      this.selectedRow = rows.reduce((acc,row,index)=>(row.reference===selectedReference?index:acc));
+    }
   }
 
   getBounds() {
-    console.log("TBL",this.myRef.current.rootTableElement);
     let m = measure(this.myRef.current.rootTableElement);
 
     if (m.w>window.innerWidth-30)
       m.w = window.innerWidth-30;
-    //let m = {w:500, h:300};
 
     return super.getBounds({
       minimumWidth: m.w,
@@ -31,11 +36,20 @@ class VTable extends Component {
   renderChild(child, additionalProps) {
     let element = React.createElement(
         getComponentTypeByTree(child),
-        { tree: child, enabled: this.state.enabled, readOnly:this.state.readOnly, key: child.reference, layoutContext: this.props.layoutContext, parentReference: this.state.tree.reference, ...additionalProps }
+        { enabled: this.state.enabled, readOnly:this.state.readOnly, key: child.reference, layoutContext: this.props.layoutContext, parentReference: this.state.tree.reference, ...additionalProps }
         // enabled and readOnly are recursive until the new child value is set
     );
     return element;
-}
+  }
+
+  handleSelection(selection) {
+    $(':focus').blur();
+
+    if (this.selectedRow!==selection[0].rows[0]) {
+      this.selectedRow = selection[0].rows[0];
+      this.context.eventHandler({component:this.state.tree, eventName:"RowChangeEvent", value:this.selectedRow});
+    }
+  }
 
   componentDidUpdate() {
     if (this.state.style.height)
@@ -51,9 +65,7 @@ class VTable extends Component {
         let cell = {value:""};
         if (i<rows.length && j<rows[i].vTableCell.length) {
           cell = rows[i].vTableCell[j];
-          if (!cell.value)
-            cell.value="";
-          retVal = <Cell>{cell.value}</Cell>;
+          retVal = <Cell>{cell.value?cell.value:""}</Cell>;
         }
         if (col.editable) {
           let cmpnt = null;
@@ -63,26 +75,24 @@ class VTable extends Component {
             if (col.component && col.component.length>0)
               cmpnt = col.component[0];
           }
-          /*if (!cmpnt) {
-            cmpnt = {
-              className: "D#TextBox",
-              reference: (i*rows.length+cols+1),
-              text: cell.value
-            };
-          } */
-          if (cmpnt)       
-            retVal = this.renderChild(cmpnt);
+          if (cmpnt)
+            retVal = this.renderChild(cmpnt, {tree: cell});
+        }
+        else {
         }
         return retVal;
       };
       return <Column key={col.reference} name={col.caption} cellRenderer={renderer}/>;
     })
 
-    console.log("VTABLE",this.state.style);
-
     let rowHeight = 31;
     return (
-      <Table ref={this.myRef} enableColumnResizing={false} enableRowResizing={false} columnWidths={cols.map(col=>col.width?col.width:50)} style={this.state.style} numRows={rows.length} maxRowHeight={rowHeight} minRowHeight={rowHeight} defaultRowHeight={rowHeight}>
+      <Table ref={this.myRef} enableColumnResizing={false} enableRowResizing={false} columnWidths={cols.map(col=>col.width?col.width:50)} style={this.state.style} numRows={rows.length} 
+        maxRowHeight={rowHeight} minRowHeight={rowHeight} defaultRowHeight={rowHeight}
+        onSelection={(e)=>this.handleSelection(e)}
+        selectionModes={SelectionModes.CELLS}
+        enableMultipleSelection={false}
+      >
         {renderedCols}
       </Table>
     );

@@ -9,6 +9,12 @@ class InputField extends Component {
     super(props);
     this.state.value = this.state.tree.text?this.state.tree.text:"";
 
+    // handling the case when we are inside a VTable cell...
+    if (this.state.tree.value)
+      this.state.value = this.state.tree.value;
+    if (this.state.tree.component && this.state.tree.component.length>0 && this.state.tree.component[0].text)
+      this.state.value = this.state.tree.component[0].text;
+
     this.inputRef = React.createRef();
   }
 
