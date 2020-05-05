@@ -124,7 +124,7 @@ Component|Fields&Events|Description
 &nbsp;|*FocusLostEvent*|emitted when the component loses the focus; the checkbox value (true or false) is passed in the *value* argument
 **ComboBox**||a text input field combined with a list of values to select from
 &nbsp;|*text*|the text value of the input field (if editable==false, the text value must be one of the values of the items)
-&nbsp;|*item*|an array of items, where each item must have a *value* field; such values will be shown in the drop down menu
+&nbsp;|*item[{value}]*|an array of items, where each item must have a *value* field; such values will be shown in the drop down menu
 &nbsp;|*editable*|whether the user can enter an arbitrary value, not just a value from the list; if *false*, only the HTML select will be displayed (default: true)
 ||
 &nbsp;|*ChangeEvent*|emitted when the user selects one of the values in the drop down menu, or enters a new text value
