@@ -1,6 +1,6 @@
 {
   "name": "@LUMII-Syslab/imcs_dialogvisualizer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A JavaScript library for visualizing dialog windows described in JSON. Useful for displaying generated dialogs.",
   "main": "dist/imcs_dialogvisualizer.js",
   "directories": {
