@@ -7,6 +7,8 @@ import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/table/lib/css/table.css";
 
+import $ from "jquery";
+
 import { Dialog, Classes, Spinner } from "@blueprintjs/core";
 
 // importing all our dialog components, since containers will search for them...
@@ -240,13 +242,14 @@ class Form extends VerticalBox {
   }
 
   render() {
+
     if (this.state.needsDialog)
       return (<Dialog isOpen={true} onClose={(e) => this.onClose()}
         title={this.state.caption}
         style={{ width: this.state.outerWidth, height: this.state.outerHeight }}>
 
         <LayoutContext.Provider value={this.layoutContext}>
-          {this.state.spinner && <div style={{ padding: 200 }}><Spinner /></div>}
+          {this.state.spinner && <div style={{ marginLeft: 10, marginRight: 10, marginTop: 20, height: 50 }}><Spinner /></div>}
           <div ref={this.myRef} className={Classes.DIALOG_BODY} style={{ visibility: this.state.spinner ? "hidden" : "visible", ...this.state.style }}>
             {this.renderChildren().map((component, index) => {
               return (
@@ -263,7 +266,7 @@ class Form extends VerticalBox {
       return (
         <div style={{ textAlign: "center" }} /*className="bp3-dark"*/>
           <LayoutContext.Provider value={this.layoutContext}>
-            {this.state.spinner && <div style={{ padding: 200 }}><Spinner /></div>}
+            {this.state.spinner && <div style={{ marginLeft: 10, marginRight: 10, marginTop: 20, height: 50 }}><Spinner /></div>}
             <div ref={this.myRef} className={Classes.DIALOG_BODY} style={{ visibility: this.state.spinner ? "hidden" : "visible", ...this.state.style }}>
               {this.renderChildren().map((component, index) => {
                 return (
